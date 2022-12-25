@@ -1,19 +1,13 @@
 const uptime = document.querySelector('#uptime');
-const images = document.querySelector('#images');
 const days = document.querySelector('#days');
-const loading = document.querySelector('.loading-screen');
+const highscore = document.querySelector('#highscore');
+const highscoreElement = document.querySelector('.highscore');
 
-const imagesResponse = await fetch('/images');
-if (!imagesResponse.ok) {
-    throw new Error('Couldn\'t fetch server images!');
+const highscoreResponse = await fetch('/highscore');
+if (!highscoreResponse.ok) {
+    throw new Error('Couldn\'t fetch server highscore!');
 }
-var imageData = await imagesResponse.json();
-
-var randomImg = Math.floor(Math.random() * imageData) + 1;
-images.src = `./img/pozdrawiam/${randomImg}.png`;
-
-var randomDelay = Math.random() * 3;
-loading.style.animationDelay = `${randomDelay + 1}s`;
+var highscoreData = await highscoreResponse.json();
 
 const uptimeResponse = await fetch('/uptime');
 if (!uptimeResponse.ok) {
@@ -35,6 +29,12 @@ async function uptimeUpdate() {
     days.innerHTML = `${uptimeD}`
     uptime.innerHTML = `${uptimeH} hour(s) ${uptimeM} minute(s) and ${uptimeS} second(s)`;
     uptimeData++;
+
+    if (uptimeD >= highscoreData) {
+        highscoreElement.style.display = 'none';
+    } else {
+        highscore.innerHTML = highscoreData;
+    }
 }
 
 setInterval(uptimeUpdate, 1000);
