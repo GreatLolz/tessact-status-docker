@@ -1,0 +1,119 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #36393e;
+    color: white;
+    font-size: 20px;
+}
+
+.loading-screen {
+    background-color: #282b30;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOut 0.5s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 5s;
+}
+
+.loading-box {
+    height: 20em;
+    width: 20em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.loading-box span:first-of-type {
+    margin: 4em 0 0.25em 0;
+    font-size: 0.8em;
+    color: #7289da;
+}
+
+.loading-box span:nth-of-type(2) {
+    width: 15em;
+    text-align: center;
+}
+
+#loading-img {
+    width: 5em;
+    animation-name: img-spin;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.main {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main h1 {
+    margin: 0;
+    margin-top: 1em;
+    font-size: 3rem;
+}
+
+.main h2 {
+    margin-top: 2em;
+}
+
+.main h3 {
+    margin-top: 2em;
+}
+
+.main p {
+    margin-top: 1em;
+}
+
+#days {
+    margin-bottom: 1em;
+    color: #ff99a3;
+    font-size: 30px;
+}
+
+#uptime {
+    color: #7289da;
+}
+
+#images {
+    height: 20em;
+}
+
+@keyframes img-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    60% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    to {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
