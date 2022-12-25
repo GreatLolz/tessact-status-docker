@@ -1,3 +1,7 @@
+* {
+    font-size: 20px;
+}
+
 html {
     box-sizing: border-box;
 }
@@ -8,7 +12,6 @@ body {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     background-color: #36393e;
     color: white;
-    font-size: 20px;
 }
 
 .loading-screen {
@@ -31,12 +34,12 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .loading-box span:first-of-type {
     margin: 4em 0 0.25em 0;
-    font-size: 0.8em;
+    font-size: 0.8rem;
     color: #7289da;
 }
 
@@ -53,8 +56,8 @@ body {
 }
 
 .main {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -63,15 +66,17 @@ body {
 .main h1 {
     margin: 0;
     margin-top: 1em;
-    font-size: 3rem;
+    font-size: 2rem;
+    animation-name: gradient;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .main h2 {
-    margin-top: 2em;
-}
-
-.main h3 {
-    margin-top: 2em;
+    margin-top: 1em;
+    font-size: 2.5rem;
 }
 
 .main p {
@@ -79,9 +84,9 @@ body {
 }
 
 #days {
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     color: #ff99a3;
-    font-size: 30px;
+    font-size: 4rem;
 }
 
 #uptime {
@@ -89,7 +94,9 @@ body {
 }
 
 #images {
-    height: 20em;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    height: 15em;
 }
 
 @keyframes img-spin {
@@ -115,5 +122,41 @@ body {
     to {
         visibility: hidden;
         opacity: 0;
+    }
+}
+
+@keyframes gradient {
+    from {
+        color: white;
+    }
+
+    to {
+        color: #4e75ff;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .main h2 {
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .main h1 {
+        font-size: 1.25rem;
+    }
+    
+    .main h2 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    #images {
+        height: 12em;
+    }
+
+    #uptime {
+        font-size: 0.75rem;
+        text-align: center;
     }
 }

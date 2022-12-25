@@ -1,20 +1,28 @@
 const uptime = document.querySelector('#uptime');
 const images = document.querySelector('#images');
 const days = document.querySelector('#days');
+const loading = document.querySelector('.loading-screen');
 
-var random = Math.floor(Math.random() * 6) + 1;
-images.src = `./img/pozdrawiam/${random}.png`
+const imagesResponse = await fetch('/images');
+if (!imagesResponse.ok) {
+    throw new Error('Couldn\'t fetch server images!');
+}
+var imageData = await imagesResponse.json();
 
-async function fetchUptime() {
-    const response = await fetch('/uptime');
+var randomImg = Math.floor(Math.random() * imageData) + 1;
+images.src = `./img/pozdrawiam/${randomImg}.png`;
 
-    if (!response.ok) {
-        throw new Error('Couldn\'t fetch server uptime!');
-    }
+var randomDelay = Math.random() * 3;
+loading.style.animationDelay = `${randomDelay + 1}s`;
 
-    const data = await response.json();
+const uptimeResponse = await fetch('/uptime');
+if (!uptimeResponse.ok) {
+    throw new Error('Couldn\'t fetch server uptime!');
+}
+var uptimeData = await uptimeResponse.json();
 
-    var uptimeS = data;
+async function uptimeUpdate() {
+    var uptimeS = uptimeData;
     var uptimeM = uptimeS/60;
     var uptimeH = uptimeM/60;
     var uptimeD = uptimeH/24;
@@ -26,6 +34,7 @@ async function fetchUptime() {
 
     days.innerHTML = `${uptimeD}`
     uptime.innerHTML = `${uptimeH} hour(s) ${uptimeM} minute(s) and ${uptimeS} second(s)`;
+    uptimeData++;
 }
 
-setInterval(fetchUptime, 1000);
+setInterval(uptimeUpdate, 1000);
