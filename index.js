@@ -58,13 +58,12 @@ app.get('/uptime', (request, response) => {
     response.json(uptime);
 });
 
-var imageCount;
-fs.readdir('./public/img/pozdrawiam/', (err, files) => {
-    imageCount = files.length;
-});
-
 app.get('/images', (request, response) => {
-    response.json(imageCount);
+    fs.readdir('./public/img/pozdrawiam/', (err, files) => {
+        let index = Math.floor(Math.random() * files.length);
+        let randomImage = `./img/pozdrawiam/${files[index]}`;
+        response.json(randomImage);
+    });
 })
 
 app.listen(port, () => { console.log(`Listening at port ${port}`) });

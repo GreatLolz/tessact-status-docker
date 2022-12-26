@@ -7,8 +7,7 @@ if (!imagesResponse.ok) {
 }
 var imageData = await imagesResponse.json();
 
-var randomImg = Math.floor(Math.random() * imageData) + 1;
-images.src = `./img/pozdrawiam/${randomImg}.png`;
+images.src = imageData;
 
 var randomDelay = Math.random() * 3;
 loading.style.animationDelay = `${randomDelay + 1}s`;
