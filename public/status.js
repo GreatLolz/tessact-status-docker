@@ -23,8 +23,8 @@ async function uptimeUpdate() {
 
     uptimeS = Math.floor(uptimeS)%60;
     uptimeM = Math.floor(uptimeM)%60;
-    uptimeH = Math.floor(uptimeH)%60;
-    uptimeD = Math.floor(uptimeD)%24;
+    uptimeH = Math.floor(uptimeH);
+    uptimeD = Math.floor(uptimeD);
 
     days.innerHTML = `${uptimeD}`
     uptime.innerHTML = `${uptimeH} hour(s) ${uptimeM} minute(s) and ${uptimeS} second(s)`;
